@@ -1,0 +1,25 @@
+INSERT INTO dbo.TBLPERSON
+        ( oid , personcode , personaccount , personpassword , personname ,personsex ,personstatus ,persontype ,
+		personofficephone , personmobilephone ,personemail ,personmemo ,cuser , cdate , muser , mdate ,mpwdtime , 
+		personpasswordquestion ,personpasswordanswer ,addition1 ,addition2)
+VALUES  ( NEWID() ,N'SysAdmin' ,N'SysAdmin' ,N'74114251E25E183C' ,N'系统管理员' ,1 ,1 , 4 , 
+			 N'0512-66607856' ,N'15190080304' , N'knwolf@126.com' , N'我是系统管理员' , N'SysAdmin' ,GETDATE() ,N'Admin' ,GETDATE() , GETDATE() , 
+          N'1+1' , N'2' ,  N'' , N''  )
+
+
+INSERT INTO dbo.TBLFUNCTION( oid ,functionkey ,functionname ,functionlevel ,functionparentid ,functionurl ,functionstatus ,
+          functionorder ,functiontype ,memo ,cuser ,cdate ,muser ,mdate ,addition1 ,addition2)
+VALUES  ( NEWID() ,N'BasicData' ,N'基础数据' , 0 , N'0' , N'' , 1 , 
+          1 ,0 ,N'基础数据管理' , N'Admin' , GETDATE(), N'Admin' , GETDATE(), N'' ,N'')
+
+
+INSERT INTO dbo.TBLFUNCTION( oid ,functionkey ,functionname ,functionlevel ,functionparentid ,functionurl ,functionstatus ,
+          functionorder ,functiontype ,memo ,cuser ,cdate ,muser ,mdate ,addition1 ,addition2)
+VALUES  ( NEWID() ,N'PersonManage' ,N'人员管理' , 1 , N'F02A7868-0985-4F26-8AF7-E6E5E264F3C7' , N'..\BasicData\PersonManage.aspx' , 1 , 
+          1 ,0 ,N'人员管理' , N'Admin' , GETDATE(), N'Admin' , GETDATE(), N'' ,N'')
+
+
+INSERT INTO dbo.TBLFUNCTION( oid ,functionkey ,functionname ,functionlevel ,functionparentid ,functionurl ,functionstatus ,
+          functionorder ,functiontype ,memo ,cuser ,cdate ,muser ,mdate ,addition1 ,addition2)
+VALUES  ( NEWID() ,N'FunctionManage' ,N'功能管理' , 1 , N'F02A7868-0985-4F26-8AF7-E6E5E264F3C7' , N'..\BasicData\FunctionManage.aspx' , 1 , 
+          2 ,0 ,N'功能管理' , N'Admin' , GETDATE(), N'Admin' , GETDATE(), N'' ,N'')

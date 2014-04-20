@@ -1,0 +1,86 @@
+--创建人员表
+create table TBLPERSON
+(
+  oid                          NVARCHAR(40) default (NEWID()) not null primary key,
+  personcode                   NVARCHAR(40) default (' ') not null,
+  personaccount                NVARCHAR(40) default (' ') not null,
+  personpassword               NVARCHAR(100) default (' ') not null,
+  personname                   NVARCHAR(40) default (' ') not null,
+  personsex                    int default (0) not null,
+  personstatus                 int default (0) not null,
+  persontype                   int default (0) not null,
+  personofficephone            NVARCHAR(40) default (' ') not null,
+  personmobilephone            NVARCHAR(40) default (' ') not null,
+  personemail                  NVARCHAR(40) default (' ') not null,
+  personmemo                   NVARCHAR(40) default (' ') not null,
+  cuser							NVARCHAR(40) default (' ') not null,
+  cdate							DATETIME default (GETDATE()) not null,
+  muser							NVARCHAR(40) default (' ') not null,
+  mdate							DATETIME default (GETDATE()) not null,
+  mpwdtime						DATETIME default (GETDATE()) not null,
+  personpasswordquestion       NVARCHAR(100) default (' ') not null,
+  personpasswordanswer         NVARCHAR(100) default (' ') not NULL,
+  addition1		       NVARCHAR(50)	null,
+  addition2		       NVARCHAR(50)	null
+)
+--创建功能表
+create table TBLFUNCTION
+(
+  oid              NVARCHAR(40) default (NEWID()) not null primary key,
+  functionkey      NVARCHAR(40) default (' ') not null,
+  functionname       NVARCHAR(40) not null,
+  functionlevel    int default (0) not null,
+  functionparentid NVARCHAR(40) default (' ') not null,
+  functionurl      NVARCHAR(100) default (' ') not null,
+  functionstatus   int default (1) not null,
+  functionorder    int default (0) not null,
+  functiontype     int default (0) not null,
+  memo             NVARCHAR(100) default (' ') not null,
+  cuser       NVARCHAR(40) default (' ') not null,
+  cdate       DATETIME default (GETDATE()) not null,
+  muser       NVARCHAR(40) default (' ') not null,
+  mdate       DATETIME default (GETDATE()) not null,
+  addition1		       NVARCHAR(50)	null,
+  addition2		       NVARCHAR(50)	null
+)
+--功能组
+create table TBLPermissionGroup
+(
+  oid							NVARCHAR(40) default (NEWID()) not null primary key,
+  groupcode						NVARCHAR(40) default (' ') not null,
+  groupname						NVARCHAR(40) default (' ') not null,
+  groupstatus					int default (0) not null,
+  memo							NVARCHAR(100) NULL,
+  cuser							NVARCHAR(40) default (' ') not null,
+  cdate							DATETIME default (GETDATE()) not null,
+  muser							NVARCHAR(40) default (' ') not null,
+  mdate							DATETIME default (GETDATE()) not null,
+  addition1						NVARCHAR(50)	null,
+  addition2						NVARCHAR(50)	null
+)
+--人员和功能组关系
+create table TBLGroupPersonMap
+(
+  oid							NVARCHAR(40) default (NEWID()) not null primary key,
+  groupID						NVARCHAR(40) default (' ') not null,
+  PersonID						NVARCHAR(40) default (' ') not null,
+  cuser							NVARCHAR(40) default (' ') not null,
+  cdate							DATETIME default (GETDATE()) not null,
+  muser							NVARCHAR(40) default (' ') not null,
+  mdate							DATETIME default (GETDATE()) not null,
+  addition1						NVARCHAR(50)	null,
+  addition2						NVARCHAR(50)	null
+)
+--菜单功能组关系表
+create table TBLGroupFunctionMap
+(
+  oid							NVARCHAR(40) default (NEWID()) not null primary key,
+  groupID						NVARCHAR(40) default (' ') not null,
+  functionID					NVARCHAR(40) default (' ') not null,
+  cuser							NVARCHAR(40) default (' ') not null,
+  cdate							DATETIME default (GETDATE()) not null,
+  muser							NVARCHAR(40) default (' ') not null,
+  mdate							DATETIME default (GETDATE()) not null,
+  addition1						NVARCHAR(50)	null,
+  addition2						NVARCHAR(50)	null
+)
